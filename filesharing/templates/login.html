@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Login
+
+{% endblock %}
+
+{% block body %}
+    
+    <div class="container w-25 my-5">
+        <h2 class="my-5">Login</h2>
+        <hr>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                    {{message}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <input type="email" class="form-control" name="email" id="exampleFormControlInput1" placeholder="Email" required>
+            </div>
+            <div class="mb-3">
+                <input type="password" class="form-control" name="pwd" id="exampleFormControlInput1" placeholder="Password" required>
+            </div>
+            <div class="mb-3">
+                <input type="submit" class="btn btn-danger w-100" value="Login">
+            </div>
+            <center>
+                Don't have an account? <a href="{% url 'signup' %}" class="text-light">Signup</a>
+            </center>
+        </form>
+    </div>
+
+{% endblock %}

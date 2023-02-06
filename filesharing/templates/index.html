@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block body %}
+    {% for file in files reversed %}
+        <div class="container border border-success my-5 py-4  form-control">
+            <h1 class="mx-5">
+                {{file.title}}
+            </h1>
+            <small><p class="mx-5 text-primary">uploaded by <i>{{file.user.name}}</i></p></small>
+            <p class="mx-5">
+                {{file.description}}
+            </p>
+            <div class="mx-5">
+                <a class="btn btn-outline-success btn-sm" href="media/{{file.file_field}}/" target="_blank">View</a>
+                <a class="btn btn-outline-success btn-sm" href="media/{{file.file_field}}/" download>Download</a>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
